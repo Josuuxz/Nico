@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mensaje Personalizado</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+        
+
+        body {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            height: 100vh;
+
+            background: linear-gradient(135deg, #ffe4e1 0%, #ffc1cc 100%);
+
+            font-family: 'Poppins', sans-serif;
+
+            color: #ff66b2;
+
+            margin: 0;
+
+        }
+
+        .container {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            text-align: center;
+
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+        }
+
+        h1 {
+
+            margin-bottom: 20px;
+
+            font-size: 24px;
+
+            color: #ff69b4;
+
+        }
+
+        .button-container {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 20px;
+
+            margin-top: 20px;
+
+        }
+
+        button {
+
+            padding: 10px 20px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background-color: #ff80bf;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: background-color 0.3s, transform 0.3s;
+
+        }
+
+        button:hover {
+
+            background-color: #ff66a3;
+
+        }
+
+        #message {
+
+            display: none;
+
+            margin-top: 20px;
+
+            font-size: 18px;
+
+            color: #ff69b4;
+
+        }
+
+    </style>
+
+    <script>
+
+        function handleYesButtonClick() {
+
+            document.getElementById('yesButton').style.display = 'none';
+
+            document.getElementById('noButton').style.display = 'none';
+
+            document.getElementById('question').style.display = 'none';
+
+            document.getElementById('message').style.display = 'block';
+
+        }
+
+        function handleNoButtonClick() {
+
+            const noButton = document.getElementById('noButton');
+
+            const yesButton = document.getElementById('yesButton');
+
+            const container = document.querySelector('.container');
+
+            const containerRect = container.getBoundingClientRect();
+
+            const maxWidth = containerRect.width - noButton.offsetWidth;
+
+            const maxHeight = containerRect.height - noButton.offsetHeight;
+
+            const randomX = Math.floor(Math.random() * maxWidth);
+
+            const randomY = Math.floor(Math.random() * maxHeight);
+
+            noButton.style.position = 'absolute';
+
+            noButton.style.left = `${randomX}px`;
+
+            noButton.style.top = `${randomY}px`;
+
+            let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+
+            yesButton.style.fontSize = (currentSize * 1.1) + 'px';
+
+            yesButton.style.padding = '15px 30px';
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 id="question">¿sexo para el lunes?</h1>
+
+        <div class="button-container">
+
+            <button id="yesButton" onclick="handleYesButtonClick()">Sí</button>
+
+            <button id="noButton" onclick="handleNoButtonClick()">No</button>
+
+        </div>
+
+        <h2 id="message">sabia luego que sí🤤🥵🔥.</h2>
+
+    </div>
+
+</body>
+
+</html>
